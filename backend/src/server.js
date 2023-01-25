@@ -27,8 +27,12 @@ app.get('/',(req,res)=>{
 
 app.listen(PORT,async()=>{
     // connect mongoDB 
-     connect();
-    console.log(`http://localhost:${PORT}`)
+    try{
+        connect();
+        console.log(`http://localhost:${PORT}`)
+    }catch(err){
+        console.log(err.message)
+    }
 
 
 })

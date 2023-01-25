@@ -11,6 +11,8 @@ import AllProduct from "./AllProduct"
 import LandingPage from './LandingPage'
 import Login from './Login'
 import Signup from './Singup'
+import UnauthorizePage from './../Components/Admin/UnauthorizePage';
+import PrivateRouteAdmin from '../Components/Admin/PrivateRouteAdmin'
 
 const AllRoutes = () => {
   return (
@@ -18,16 +20,17 @@ const AllRoutes = () => {
       <Route path="/" element={<Navbar />} >
         <Route index element={<LandingPage />} />
         <Route path='products' element={<AllProduct />} />
-        <Route path="admin" element={<DashboardHeader />} >
+        <Route path="admin" element={<PrivateRouteAdmin><DashboardHeader /></PrivateRouteAdmin>} >
           <Route index element={<Dashboard />} />
-          <Route path="/admin/customer" element={<Customer />} />
-          <Route path="/admin/customer-list" element={<CustomerList />} />
-          <Route path="/admin/product-list" element={<ProductList />} />
-          <Route path="/admin/product" element={<Product />} />
+          <Route path="/admin/customer" element={<PrivateRouteAdmin><Customer /></PrivateRouteAdmin>} />
+          <Route path="/admin/customer-list" element={<PrivateRouteAdmin><CustomerList /></PrivateRouteAdmin>} />
+          <Route path="/admin/product-list" element={<PrivateRouteAdmin><ProductList /></PrivateRouteAdmin>} />
+          <Route path="/admin/product" element={<PrivateRouteAdmin><Product /></PrivateRouteAdmin>} />
         </Route>
       </Route>
       <Route path="/auth/signup" element={<Signup />} />
       <Route path="/auth/login" element={<Login />} />
+      <Route path="/unauthorize" element={<UnauthorizePage />} />
 
 
       {/* make it private Route and secure */}

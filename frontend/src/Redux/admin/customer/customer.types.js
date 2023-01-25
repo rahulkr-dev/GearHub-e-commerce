@@ -1,0 +1,8 @@
+
+export const ADD_CUSTOMER_SUCESS = "ADDING CUSTOMER TO DATABASE"
+export const ADD_CUSTOMER_ERROR = "ADD CUSTOMER ERROR"
+
+export const GET_CUSTOMER_SUCESS = "get CUSTOMER /sucesss"
+export const GET_CUSTOMER_ERROR = "GET/CUSTOMER /error";
+
+export const CUSTOMER_ADDED_RESET = "CUSTOMER ADDED reset"

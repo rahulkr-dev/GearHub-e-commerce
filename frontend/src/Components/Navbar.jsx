@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
     Box,
     Flex,
@@ -11,41 +11,74 @@ import {
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
-    Center
+    Center, Text, InputGroup, InputLeftElement, Input, DrawerCloseButton, Grid
 } from "@chakra-ui/react";
 import { Link, Outlet } from "react-router-dom";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { useSelector } from 'react-redux';
+import UserProfile from "./UserProfile";
+
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
+    const { auth, role } = useSelector(store => store.auth)
+    // we are decording the token from local storage and use for rendering dashboard button
+    // useEffect(() => {
+    //     let token = localStorage.getItem('token')
+    //     let decoded = jwt_decode(token);
+    //     setRole(decoded.role)
+    // }, []);
+    // console.log(role)
 
     return (
         <>
-            <Box p="10px" w="100%" position={"fixed"} bg="gray.200">
-                <Flex fontSize={"1.2rem"} justifyContent="space-around" alignItems="center" fontWeight={"bold"} fontFamily="cursive" >
-                    <Flex w="full" display={{base:"none",md:"none",lg:"flex"}} gap="2rem" justifyContent={"center"} alignItems="center" >
-                        <CLink as={Link} to="/" color="black">
-                            Home
+            <Box p="10px" w="100%" position={"fixed"} bg="rgb(49,119,230)" color="#fff" >
+                <Flex gap="2rem" fontSize={"1rem"} justifyContent="space-evenly" alignItems="center" fontWeight={"600"} fontFamily={"heading"} >
+                    <Text><Link to="/">LOGO</Link></Text>
+                    {/* display in bigger secreen */}
+                    <Flex display={{ base: "none", md: "none", lg: "flex" }} gap="2rem" justifyContent={"center"} alignItems="center" >
+                        <CLink as={Link} to="/men">
+                            Men
                         </CLink>
-                        <CLink as={Link} to="/products" color="black">
-                            products
+                        <CLink as={Link} to="/women">
+                            Women
                         </CLink>
-                        <CLink as={Link} to="/cart" color="black">
-                            cart
+                        <CLink as={Link} to="/kids">
+                            Kids
                         </CLink>
-                        <CLink as={Link} to="/admin" color="black">
+                        <CLink as={Link} to="/assessories">
+                            Assessories
+                        </CLink>
+                        <InputGroup>
+                            <InputLeftElement
+                                pointerEvents='none'
+                                children={<SearchIcon color='gray.500' />}
+                            />
+                            <Input color="gray.700" w="max-content" bg="gray.100" p="6px 3rem" outline="none" variant='unstyled' type='search' placeholder='Search' />
+                        </InputGroup>
+                    </Flex>
+                    {/* role base access in frontend and also our all admin route procted by backend */}
+                    {
+                        role === "admin" && <CLink as={Link} to="/admin">
                             Dahboard
                         </CLink>
+                    }
+                    <Flex gap="2rem" >
+                        {auth ? <Center ml="3rem" pt="2px" ><UserProfile /><Text pl="5px" fontSize={"14px"}  >profile</Text></Center> : <Box ><Link to="/auth/login">Login</Link></Box>}
+                        <Box>
+                            CART
+                        </Box>
                     </Flex>
-                    <Flex w="full" display={{ base:"flex",md:"flex",lg:"none" }}
+
+
+                    {/* for smaller screen hamburger icon */}
+                    <Flex display={{ base: "flex", md: "flex", lg: "none" }}
                         gap="1rem"
                         pr="1rem"
                         justifyContent={"flex-end"}
                     >
-                        <Box>Rahul</Box>
                         <Center
-
                             ref={btnRef}
                             onClick={onOpen}
                             _hover={{ cursor: "pointer" }}
@@ -55,9 +88,7 @@ function Navbar() {
 
                     </Flex>
 
-
-                    {/* For smaller Screen */}
-
+                    {/* drawer for smaller screen */}
                     <Drawer
                         placement="right"
                         onClose={onClose}
@@ -65,21 +96,27 @@ function Navbar() {
                         finalFocusRef={btnRef}
                     >
                         <DrawerOverlay />
-                        <DrawerContent>
+                        <DrawerContent color="white"
+                         bg="radial-gradient(circle, rgba(3,8,11,0.9640231092436975) 0%, rgba(8,13,13,1) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(4,5,10,0.958420868347339) 0%)" >
+
+                            <DrawerCloseButton />
                             <DrawerHeader>Menu</DrawerHeader>
-                            <DrawerBody>
-                                <CLink as={Link} to="/admin" color="black">
-                                    Dahboard
-                                </CLink>
-                                <CLink as={Link} to="/" color="black" onClick={onClose}>
-                                    Home
-                                </CLink>
-                                <CLink as={Link} to="/products" color="black" onClick={onClose}>
-                                    products
-                                </CLink>
-                                <CLink as={Link} to="/cart" color="black" onClick={onClose}>
-                                    cart
-                                </CLink>
+                            <DrawerBody display="grid" >
+                                <Grid h="10rem" >
+                                    <Box  >
+                                        <Link to="/men">Men</Link>
+                                    </Box>
+                                    <Box>
+                                        <Link to="/women">Women</Link>
+                                    </Box>
+                                    <Box>
+                                        <Link to="/kids">Kids</Link>
+                                    </Box>
+                                    <Box >
+                                        <Link to="/asscessories">Asscessories</Link>
+                                    </Box>
+                                </Grid>
+
                             </DrawerBody>
                             <DrawerFooter>
                                 <IconButton icon="close" onClick={onClose} mr="auto" />
