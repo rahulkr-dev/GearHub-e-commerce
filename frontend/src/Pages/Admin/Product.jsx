@@ -41,6 +41,9 @@ const Product = () => {
     const payload = {...product,image_urls:imageStore};
     // dispatching payload to trigering action;
     dispatch(addProduct(payload))
+    setProduct(init);
+    setImage("");
+    setImageStore([])
   }
   const addImage = () => {
     setImageStore([...imageStore, image]);
@@ -125,6 +128,7 @@ const Product = () => {
             <option value="male">Men</option>
             <option value="female">Women</option>
             <option value="kids">Kids</option>
+            <option value="all">All</option>
           </select>
         </Box>
       </Grid>

@@ -33,9 +33,9 @@ function Navbar() {
 
     return (
         <>
-            <Box p="10px" w="100%" position={"fixed"} bg="rgb(49,119,230)" color="#fff" >
+            <Box p="10px" w="100%" position={"fixed"} zIndex={2} bg="rgb(49,119,230)" color="#fff" >
                 <Flex gap="2rem" fontSize={"1rem"} justifyContent="space-evenly" alignItems="center" fontWeight={"600"} fontFamily={"heading"} >
-                    <Text><Link to="/">LOGO</Link></Text>
+                    <Text><Link to="/">GearHub</Link></Text>
                     {/* display in bigger secreen */}
                     <Flex display={{ base: "none", md: "none", lg: "flex" }} gap="2rem" justifyContent={"center"} alignItems="center" >
                         <CLink as={Link} to="/men">
@@ -65,7 +65,8 @@ function Navbar() {
                         </CLink>
                     }
                     <Flex gap="2rem" >
-                        {auth ? <Center ml="3rem" pt="2px" ><UserProfile /><Text pl="5px" fontSize={"14px"}  >profile</Text></Center> : <Box ><Link to="/auth/login">Login</Link></Box>}
+                        {auth ? <Center ml="3rem" pt="2px" ><UserProfile /><Text pl="5px" fontSize={"14px"}  >profile</Text></Center> : <Box 
+                        border="1px solid #fff" p="4px 12px" borderRadius={"5px"}><Link to="/auth/login">Login</Link></Box>}
                         <Box>
                             CART
                         </Box>

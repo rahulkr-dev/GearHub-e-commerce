@@ -1,0 +1,92 @@
+export const landingPaCrau = [
+    {
+        image: "https://contents.mediadecathlon.com/s974361/k$2d838e7b8995f29e3c8f15c55b3f58f6/lets%20ace%20it%20desktop%20copy.jpg?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s975080/k$cbb0815940cd7a7d0e11a2a63897fc47/best%20sellers%20hp%20banner.gif?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s976036/k$17cec8ac43528860b34b03358253cf68/hp%20banner.gif?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s974054/k$f22347e3e1b61104eeaf38813e27bdbd/web.gif?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s964223/k$db4f37e9f3fab1e311155c73a8541837/winter.gif?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s975999/k$caa4c244626337fa6dea9253a027b3a3/26%20jan.jpg?format=auto&quality=70&f=1480x0"
+    },
+    {
+        image:"https://contents.mediadecathlon.com/s974249/k$ffe394e9d63dc5392f03b60b8d68639e/triban%20100%20hp.gif?format=auto&quality=70&f=1480x0"
+    }
+]
+
+export const menCrausel = [
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+]
+export const womenCrausel = [
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+]
+export const kidsCrausel = [
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+]
+export const assessCrausel = [
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+    {
+        image:""
+    },
+]

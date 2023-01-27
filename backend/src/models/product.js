@@ -2,12 +2,16 @@ const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
   user: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"user"
   },
   rating: {
     type: Number,
     min: 1,
     max: 5
+  },
+  review_title:{
+    type:String
   },
   review_text: {
     type: String
@@ -47,7 +51,7 @@ const productSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: true,
-    enum: ['male', 'female', 'kids']
+    enum: ['male', 'female', 'kids',"all"]
   },
   size: {
     type: String,

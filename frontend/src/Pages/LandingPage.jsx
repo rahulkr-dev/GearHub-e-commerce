@@ -1,10 +1,52 @@
-import { Box } from '@chakra-ui/react'
 import React from 'react'
+import { Box, Image, Text,Flex,Grid,Center } from '@chakra-ui/react'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel"
+import { landingPaCrau as images } from '../Utils/crauselData';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { cateogryInfo } from './landingPageData';
 
 const LandingPage = () => {
   return (
-    <Box pt="5rem" bg="red" h="100vh">LandingPage
-    
+    <Box pt="3.6rem" h="100vh">
+      <Box>
+        <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} >
+          {images.map((item, i) => (
+            <Box bg="white" key={i} position={"relative"} >
+              <Image src={item.image} />
+            </Box>
+
+          ))}
+        </Carousel>
+      </Box>
+      <Flex p="1rem 10px" bg="blue.100" mt="2rem" justifyContent={"space-evenly"} fontFamily="fantasy" >
+        <Flex gap="10px" >
+          <Text color="gray.700" >2 Years Of Warranty</Text>
+          <Center borderRadius={"full"} p="3px" bg="#fff" ><ArrowForwardIcon /></Center>
+        </Flex>
+        <Flex gap="10px">
+          <Text color="gray.700" >Easy Return</Text>
+          <Center borderRadius={"full"} p="3px" bg="#fff" ><ArrowForwardIcon /></Center>
+        </Flex>
+        <Flex gap="10px">
+          <Text color="gray.700" >10+ Sports & 100+ Products</Text>
+          <Center borderRadius={"full"} p="3px" bg="#fff" ><ArrowForwardIcon /></Center>
+        </Flex>
+      </Flex>
+
+      <Grid m="2rem 1rem" gridTemplateColumns={["repeat(2,1fr)","repeat(3,1fr)","repeat(4,1fr)"]} gap="12px" >
+            {cateogryInfo.map((item,i)=>(
+              <Box key={i} position="relative" >
+                <Image borderTopRadius={"1.5rem"}  src={item.image} />
+                <Flex >
+                  <Center h="3.2rem" fontWeight={"bold"} color="black" fontSize={"1.6rem"} bg="yellow.500" borderBottomLeftRadius={'1.5rem'} w="50%">₹ {item.price}</Center>
+                  <Center color="white" h="3.2rem" borderBottomRightRadius={'1.5rem'} p="15px" w="50%" bg="blue.300" >Explore More</Center>
+                </Flex>
+                <Text left="7%" color={"#fff"} fontWeight={"bold"} fontSize={['1rem','1.3rem',"1.8rem"]} top="60%" position="absolute"  >{item.name}</Text>
+                <Text fontSize={[".7rem",".9rem","1rem"]} left="7%" color="gray.400" top="69%" position="absolute"  >STARTING FROM</Text>
+              </Box>
+            ))}
+      </Grid>
     </Box>
   )
 }

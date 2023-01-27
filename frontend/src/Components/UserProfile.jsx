@@ -22,8 +22,8 @@ const UserProfile = ({ role }) => {
         <MenuButton >
           <CgProfile />
         </MenuButton>
-        <MenuList>
-          <MenuItem>
+        <MenuList color="black" >
+          <MenuItem >
             <Image
               borderRadius='full'
               boxSize='50px'
