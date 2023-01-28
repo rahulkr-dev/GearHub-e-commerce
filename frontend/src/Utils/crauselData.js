@@ -24,69 +24,51 @@ export const landingPaCrau = [
 
 export const menCrausel = [
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s968548/k$7cb116a1a9dc703379e83fbe0216cd80/men%20running%20web.png?format=auto&quality=70&f=1480x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s945789/k$889fec45cda8635923e4ca2de2ca45e8/main%20banner%20mens%20page.png?format=auto&quality=70&f=1480x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s961277/k$3d40e9757e23250280235739e980ddd5/abhishek%2001.jpg?format=auto&quality=70&f=1480x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s917941/k$2a1e21bb19c53d710dcc591c19fd0841/winter%20main%20web.jpg?format=auto&quality=70&f=1480x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/p2447497/k$a4d3da8b5fca2da05c55ead6b7eb2864/1920x473/4096pt1664/8192xcr2020/QUECHUA%20CHAUSSURE%20SH100%20WARM%20HIGH%20H%20NOIRE%20AH22.jpg?format=auto&quality=70&f=1480x0"
     },
 ]
 export const womenCrausel = [
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s932842/k$e7e067b16dc9ee9c8070b84da6c092d6/sports%20bra%20desktop.jpg?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/p2306677/k$76dc46386d04f5a4991950d632bd18de/1920x471/3000pt1811/6000xcr1473/FORCLAZ%20LEGGINGS%20TRAVEL%20500%20F%20NOIR%20AH23.jpg?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s961277/k$3d40e9757e23250280235739e980ddd5/abhishek%2001.jpg?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s975820/k$ba56635f1fed8e73466bdfbf57956eb4/women%20running%20shoes.png?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s942885/k$ae589b6702e8d20c0835d6b7274a4e7a/towel%20%20v2.jpg?format=auto&quality=70&f=768x0"
     },
 ]
 export const kidsCrausel = [
     {
-        image:""
-    },
-    {
-        image:""
-    },
-    {
-        image:""
-    },
-    {
-        image:""
-    },
-    {
-        image:""
-    },
+        image:"https://contents.mediadecathlon.com/s851303/k$0dfcc5db5c8effbb828f1fe2b3c4fb4c/main%20banner%20kids.jpg?format=auto&quality=70&f=1480x0"
+    }
 ]
 export const assessCrausel = [
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s816503/k$01eaacefb1ede15595f0fc13b601f588/Component%20256%20%201.jpg?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
+        image:"https://contents.mediadecathlon.com/s942885/k$ae589b6702e8d20c0835d6b7274a4e7a/towel%20%20v2.jpg?format=auto&quality=70&f=768x0"
     },
     {
-        image:""
-    },
-    {
-        image:""
-    },
-    {
-        image:""
-    },
+        image:"https://contents.mediadecathlon.com/s958552/k$f4d29c35e2cbbaef18ea8d2c774ad57d/home%20page%20banner%202%20copy%20%201.jpg?format=auto&quality=70&f=768x0"
+    }
 ]

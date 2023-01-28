@@ -1,23 +1,42 @@
-import { Box, Image, Text, Flex } from "@chakra-ui/react";
+import React, { useState } from "react"
+import { Box, Image, Text, Flex, Button, Center } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const CardItem = ({product}) => {
-    return (
-        <Box maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-          <Image src={product.imageUrl} alt={product.name} objectFit="cover" h="200px" />
-          <Box p="6">
-            <Text fontWeight="bold" fontSize="lg">
-              {product.name}
-            </Text>
-            <Text color="gray.500">{product.price}</Text>
-            <Flex mt="auto">
-              <Link to={`/product/${product.id}`}>
-                <Button variantColor="teal" size="sm">
-                  Learn more
-                </Button>
-              </Link>
-            </Flex>
-          </Box>
-        </Box>
-    )
+const CardItem = ({ product }) => {
+  const [image, setImage] = useState(product.image_urls[0])
+  return (
+    <Box maxW="225px" borderWidth="1px" rounded="lg" overflow="hidden" p="10px">
+      <Box>
+        <Image src={image} alt={product.name} objectFit="cover" h="200px" />
+      </Box>
+      <Flex mt="1rem" w="full" justifyContent={"flex-end"} pr="1rem" >
+        {product.image_urls.map((item, i) => (
+          <Image onClick={() => setImage(item)} key={i} src={item} objectFit="cover" h="2rem" />
+        ))
+        }
+      </Flex>
+      <Box pt="10px" textAlign={"left"}>
+        <Text fontWeight="bold" fontSize="lg" textTransform={"uppercase"}>
+          {product.brand}
+        </Text>
+        <Text m="10px 0" w="100%" h="1rem" overflow={"hidden"} textOverflow="ellipsis" color="gray" textTransform={"uppercase"} fontSize={"14px"}>
+          {product.name}
+        </Text>
+        <Flex justifyContent={"flex-start"} alignItems="center" w="full" >
+          <Center w="40%" p="6px 0" bg="yellow" color="black" fontWeight={"bold"}> ₹ {product.price}</Center>
+          <Text pl="1rem" color="gray.500" as={"del"}> ₹ {Math.round(+product.price * 1.45)}</Text>
+        </Flex>
+        <Flex mt="auto">
+          <Link to={`/product/${product._id}`}>
+
+          </Link>
+        </Flex>
+        <Button borderRadius="none" bg="gray.700" variant={"unstyled"} color="#fff" p="6px 12px" textAlign={"center"} w="full">
+          ADD TO CART
+        </Button>
+      </Box>
+    </Box>
+  )
 }
+
+export default CardItem

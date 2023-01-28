@@ -13,13 +13,20 @@ import Login from './Login'
 import Signup from './Singup'
 import UnauthorizePage from './../Components/Admin/UnauthorizePage';
 import PrivateRouteAdmin from '../Components/Admin/PrivateRouteAdmin'
+import Men from './Men'
+import Women from './Women';
+import Kids from './Kids'
+import Accessoreis from './Accessoreis'
 
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Navbar />} >
         <Route index element={<LandingPage />} />
-        <Route path='products' element={<AllProduct />} />
+        <Route path='men' element={<Men />} />
+        <Route path='women' element={<Women />} />
+        <Route path='kids' element={<Kids />} />
+        <Route path='accessories' element={<Accessoreis />} />
         <Route path="admin" element={<PrivateRouteAdmin><DashboardHeader /></PrivateRouteAdmin>} >
           <Route index element={<Dashboard />} />
           <Route path="/admin/customer" element={<PrivateRouteAdmin><Customer /></PrivateRouteAdmin>} />

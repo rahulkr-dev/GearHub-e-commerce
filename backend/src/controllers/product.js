@@ -14,10 +14,19 @@ const addProduct = async(req,res)=>{
 
 const getAllProduct = async(req,res)=>{
     try{
-        let product = await Product.find();
+        let {sortBy,sortOrder,filterBy,filterName}=req.query;
+        let sort ={};
+        let filter={}
+        if(sortBy && sortOrder){
+            sort[sortBy] = sortOrder
+        }
+        if(filterBy && filterName){
+            filter[filterBy] = filterName
+        }
+        let product = await Product.find(filter).sort(sort)
         res.send(product);
     }catch(err){
-        res.status(500).send("internal server error")
+        res.status(500).send({msg:"internal server error",error:err.message})
     }
 };
 
