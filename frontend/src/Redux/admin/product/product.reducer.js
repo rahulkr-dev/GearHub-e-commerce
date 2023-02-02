@@ -55,8 +55,8 @@ export const adminProductReducer = (state=init,{type,payload})=>{
             return {
                 ...state,
                 productCount:payload.productCount,
-                userCount:payload.userCount
-
+                userCount:payload.userCount,
+                orderCount:payload.orderCount
             }
         }
         default : return state

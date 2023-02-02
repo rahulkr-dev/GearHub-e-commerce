@@ -7,7 +7,6 @@ import DashboardHeader from './Admin/DashboardHeader'
 import Dashboard from './Admin/Dashboard'
 import Product from './Admin/Product'
 import ProductList from './Admin/ProductList'
-import AllProduct from "./AllProduct"
 import LandingPage from './LandingPage'
 import Login from './Login'
 import Signup from './Singup'
@@ -20,6 +19,7 @@ import Accessoreis from './Accessoreis'
 import Cart from './Cart';
 import Checkout from './Checkout';
 import Payment from './Payment';
+import PrivateRoute from '../Components/PrivateRoute'
 
 const AllRoutes = () => {
   return (
@@ -30,9 +30,9 @@ const AllRoutes = () => {
         <Route path='women' element={<Women />} />
         <Route path='kids' element={<Kids />} />
         <Route path='accessories' element={<Accessoreis />} />
-        <Route path='cart' element={<Cart />} />
-        <Route path='checkout' element={<Checkout />} />
-        <Route path='payment' element={<Payment />} />
+        <Route path='cart' element={<PrivateRoute><Cart /></PrivateRoute>} />
+        <Route path='checkout' element={<PrivateRoute><Checkout /></PrivateRoute>} />
+        <Route path='payment' element={<PrivateRoute><Payment /></PrivateRoute>} />
         <Route path="admin" element={<PrivateRouteAdmin><DashboardHeader /></PrivateRouteAdmin>} >
           <Route index element={<Dashboard />} />
           <Route path="/admin/customer" element={<PrivateRouteAdmin><Customer /></PrivateRouteAdmin>} />

@@ -6,7 +6,7 @@ import Loader from '../../Components/Loader';
 
 const Dashboard = () => {
   const dispatch = useDispatch()
-  const { productCount, userCount } = useSelector(store => store.admin)
+  const { productCount, userCount,orderCount } = useSelector(store => store.admin)
   const { loading } = useSelector(store => store.auth)
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Dashboard = () => {
           <Center bg="red.50" w="250px" boxShadow="lg" p="3rem" >
             <Box>
               <Text>Total Order</Text>
-              <Heading>10</Heading>
+              <Heading>{orderCount}</Heading>
             </Box>
           </Center>
         </Grid>

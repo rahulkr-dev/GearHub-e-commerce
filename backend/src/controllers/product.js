@@ -1,5 +1,6 @@
 const Product = require('../models/product');
-const User = require('../models/user')
+const User = require('../models/user');
+const Order = require('../models/order')
 
 const addProduct = async (req, res) => {
     try {
@@ -114,9 +115,11 @@ const dashboardInfo = async (req, res) => {
 
         let user = await User.aggregate([{ $group: { _id: null, userCount: { $sum: 1 } } }])
         let product = await Product.aggregate([{ $group: { _id: null, productCount: { $sum: 1 } } }])
+        let order = await Order.aggregate([{ $group: { _id: null, orderCount: { $sum: 1 } } }])
         res.send({
             userCount: user[0].userCount,
-            productCount: product[0].productCount
+            productCount: product[0].productCount,
+            orderCount:order[0].orderCount
         })
 
     } catch (err) {
