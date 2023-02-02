@@ -17,6 +17,9 @@ import Men from './Men'
 import Women from './Women';
 import Kids from './Kids'
 import Accessoreis from './Accessoreis'
+import Cart from './Cart';
+import Checkout from './Checkout';
+import Payment from './Payment';
 
 const AllRoutes = () => {
   return (
@@ -27,6 +30,9 @@ const AllRoutes = () => {
         <Route path='women' element={<Women />} />
         <Route path='kids' element={<Kids />} />
         <Route path='accessories' element={<Accessoreis />} />
+        <Route path='cart' element={<Cart />} />
+        <Route path='checkout' element={<Checkout />} />
+        <Route path='payment' element={<Payment />} />
         <Route path="admin" element={<PrivateRouteAdmin><DashboardHeader /></PrivateRouteAdmin>} >
           <Route index element={<Dashboard />} />
           <Route path="/admin/customer" element={<PrivateRouteAdmin><Customer /></PrivateRouteAdmin>} />

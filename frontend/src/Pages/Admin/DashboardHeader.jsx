@@ -16,7 +16,7 @@ const DashboardHeader = () => {
             {/* this is drawer componetn custom we are passing some props  DrawerLeft */}
             <DrawerLeft disclosure={{ isOpen, onOpen, onClose }} btnRef={btnRef} />
 
-            <Flex w="100%" bg="#fff" position={"fixed"} top="3.5rem" boxShadow={'md'} justifyContent={"space-between"} p="6px 2rem" >
+            <Flex w="100%" bg="#fff" position={"fixed"} top="3.6rem" boxShadow={'md'} justifyContent={"space-between"} p="6px 2rem" >
                 <Flex alignItems={"center"} gap="1rem">
                     <Center _hover={{ cursor: "pointer" }} ref={btnRef} onClick={onOpen}>
                         <HamburgerIcon />

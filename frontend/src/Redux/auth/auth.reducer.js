@@ -7,7 +7,7 @@ const init = {
     error:null,
     signIn:false,
     auth:!!localStorage.getItem('token'),
-    token:"",
+    token:localStorage.getItem('token') || "",
     role:fetchDataLOCAL("token")?.role
 }
 
@@ -29,7 +29,8 @@ export const authReducer = (state=init,{type,payload})=>{
             return{
                 ...state,
                 signIn:true,
-                error:null
+                error:null,
+                loading:false
             }
         }
         case FETCH_SIGNUP_ERROR :{
@@ -46,7 +47,8 @@ export const authReducer = (state=init,{type,payload})=>{
                 auth:true,
                 token:payload,
                 error:null,
-                role:role
+                role:role,
+                loading:false
             }
         }
         case FETCH_LOGIN_ERROR :{

@@ -20,7 +20,10 @@ const UserProfile = ({ role }) => {
     <Box  >
       <Menu >
         <MenuButton >
+          <Box fontSize={"3xl"} color="#fff">
           <CgProfile />
+
+          </Box>
         </MenuButton>
         <MenuList color="black" >
           <MenuItem >

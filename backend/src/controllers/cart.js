@@ -2,14 +2,20 @@
 const jwt = require('jsonwebtoken')
 const Cart = require('../models/cart')
 const User = require('../models/user')
-// sending productId and productQty from body and cartId getting from param
+// sending productId and productQty from body and token getting from param
 const addToCart = async(req,res)=>{
     try{
-        const cartId = req.params.cartId;
+        const token = req.params.token;
         const productId = req.body.productId;
-        if(!cartId || !productId){
+        if(!token || !productId){
             return res.status(404).send({msg:"cart or product are not found"});
         };
+
+        let decode = jwt.decode(token);
+        if(!decode) return res.send({msg:"User not exits"});
+
+        let cartId = decode.cartId;
+        if(!cartId) return res.send({msg:"cart not exists"})
 
         // check wheater product already present in cart or not
         let cart = await Cart.findById(cartId);
@@ -44,11 +50,17 @@ const addToCart = async(req,res)=>{
 
 const getCartOfUser = async(req,res)=>{
     try{
-        let userId = req.params.userId;
+        let token = req.params.token;
+        if(!token) return res.status(404).send("token not exists")
+        let decode = jwt.decode(token);
+        if(!decode) return res.status(404).send('User not exists');
+        const userId = decode.userId;
+        const cartId = decode.cartId;
         if(!userId) return res.status(404).send("UserId Not Found")
-        let user = await User.findById(userId,{cart:1,_id:0}).populate("cart");
-        if(!user) return res.status(404).send("Cart Not Found")
-        res.send(user)
+        // let user = await User.findById(userId,{cart:1,_id:0}).populate("cart");
+        let cart = await Cart.findById(cartId).populate('items.product')
+        // if(!user) return res.status(404).send("Cart Not Found")
+        res.send(cart)
     }catch(err){
         res.status(500).send({msg:"Internal Server Error",Error:err.message})
     }
@@ -58,17 +70,24 @@ const getCartOfUser = async(req,res)=>{
 // get productId from body and cartId from params
 const deleteItem = async(req,res)=>{
     try{
-        let cartId = req.params;
+        let token = req.params.token;
+        if(!token) return res.status(404).send("Token is missing")
         let productId = req.body.productId;
-        let userCart = await Cart.findById(cartId);
+        if(!productId) res.status(404).send('Product Id is missing')
+        let decode = jwt.decode(token);
+        let cartId = decode.cartId;
+        let userCart = await Cart.findById(cartId)
         if(!userCart) return res.status(404).send({msg:"Cart not found"});
-        let index = userCart.items.map((item,i)=>{
-            if(item.product.toString()==productId);
-            return i
+        let index;
+        userCart.items.map((item,i)=>{
+            if(item.product.toString()==productId){
+                index=i
+            }
         });
-        userCart.items.splice(index,i);
+        // console.log(index)
+        let deleteCart = userCart.items.splice(index,1);
         await userCart.save();
-        res.send({msg:"Delete item successfully"})
+        res.send({msg:"Delete item successfully",deleteCart})
     }catch(err){
         res.status(500).send({msg:"Internal Server Error",Error:err.message})
     }

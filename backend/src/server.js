@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 8080;
 
 const userRoute = require('./routes/user')
 const cartRoute = require('./routes/cart')
-const productRoute = require('./routes/product')
+const productRoute = require('./routes/product');
+const orderRoute = require('./routes/order')
 // crating server
 const app = express();
 //  middelwares
@@ -17,6 +18,7 @@ app.use(cors());
 app.use('/api/user',userRoute)
 app.use('/api/cart',cartRoute)
 app.use('/api/product',productRoute)
+app.use('/api/order',orderRoute)
 
 app.get('/',(req,res)=>{
     res.send('its working')

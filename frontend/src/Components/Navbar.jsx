@@ -13,27 +13,27 @@ import {
     DrawerContent,
     Center, Text, InputGroup, InputLeftElement, Input, DrawerCloseButton, Grid
 } from "@chakra-ui/react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { useSelector } from 'react-redux';
 import UserProfile from "./UserProfile";
+import { HiShoppingCart } from "react-icons/hi"
 
 
 function Navbar() {
+    const location = useLocation();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
-    const { auth, role } = useSelector(store => store.auth)
-    // we are decording the token from local storage and use for rendering dashboard button
-    // useEffect(() => {
-    //     let token = localStorage.getItem('token')
-    //     let decoded = jwt_decode(token);
-    //     setRole(decoded.role)
-    // }, []);
-    // console.log(role)
+    const { auth, role } = useSelector(store => store.auth);
+    const currentPath = location.pathname;
+    let adminPath = currentPath.includes('/admin');
+
 
     return (
         <>
-            <Box p="10px" w="100%" position={"fixed"} zIndex={2} bg="rgb(49,119,230)" color="#fff" >
+            <Box p="10px" w="100%" position={"fixed"} zIndex={2}
+                bg="#007dbc"
+                color="#fff" >
                 <Flex gap="2rem" fontSize={"1rem"} justifyContent="space-evenly" alignItems="center" fontWeight={"600"} fontFamily={"heading"} >
                     <Text><Link to="/">GearHub</Link></Text>
                     {/* display in bigger secreen */}
@@ -47,7 +47,7 @@ function Navbar() {
                         <CLink as={Link} to="/kids">
                             Kids
                         </CLink>
-                        <CLink as={Link} to="/assessories">
+                        <CLink as={Link} to="/accessories">
                             Assessories
                         </CLink>
                         <InputGroup>
@@ -64,13 +64,25 @@ function Navbar() {
                             Dahboard
                         </CLink>
                     }
-                    <Flex gap="2rem" >
-                        {auth ? <Center ml="3rem" pt="2px" ><UserProfile /><Text pl="5px" fontSize={"14px"}  >profile</Text></Center> : <Box 
-                        border="1px solid #fff" p="4px 12px" borderRadius={"5px"}><Link to="/auth/login">Login</Link></Box>}
-                        <Box>
-                            CART
-                        </Box>
-                    </Flex>
+                    {
+                        !adminPath && <Flex gap="2rem" >
+                            {auth ? <Grid borderRadius={"md"} justifyContent={'center'} alignItems="center" >
+                                <UserProfile />
+                            </Grid> : <Box
+                                >
+                                <Link to="/auth/login">Login</Link>
+
+                            </Box>
+                            }
+                            <Box>
+                                <Link to="/cart">
+                                    <Grid  borderRadius={"md"} justifyContent={'center'} alignItems="center">
+                                        <Center fontSize="3xl" color="white" w="full"><HiShoppingCart /></Center>
+                                    </Grid>
+                                </Link>
+                            </Box>
+                        </Flex>
+                    }
 
 
                     {/* for smaller screen hamburger icon */}
@@ -98,7 +110,7 @@ function Navbar() {
                     >
                         <DrawerOverlay />
                         <DrawerContent color="white"
-                         bg="radial-gradient(circle, rgba(3,8,11,0.9640231092436975) 0%, rgba(8,13,13,1) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(4,5,10,0.958420868347339) 0%)" >
+                            bg="radial-gradient(circle, rgba(3,8,11,0.9640231092436975) 0%, rgba(8,13,13,1) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(4,5,10,0.958420868347339) 0%)" >
 
                             <DrawerCloseButton />
                             <DrawerHeader>Menu</DrawerHeader>
@@ -114,7 +126,7 @@ function Navbar() {
                                         <Link to="/kids">Kids</Link>
                                     </Box>
                                     <Box >
-                                        <Link to="/asscessories">Asscessories</Link>
+                                        <Link to="/accessories">Asscessories</Link>
                                     </Box>
                                 </Grid>
 

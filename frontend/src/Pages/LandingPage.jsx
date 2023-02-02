@@ -13,20 +13,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDataLandingPage } from './../Redux/products/product.action';
 import CardItem from '../Components/CardItem';
 import Footer from '../Components/Footer';
+import Loader from './../Components/Loader';
 
 
 const LandingPage = () => {
 
   const dispatch = useDispatch()
   const { men, women, kids, accessories } = useSelector(store => store.product);
+  const { loading } = useSelector((store => store.cart))
+
 
   useEffect(() => {
     dispatch(getDataLandingPage())
   }, [])
   return (
     <>
-      <Box pt="3.6rem" h="100vh">
-        <Box>
+      <Box opacity={loading?"0.3":"1"}>
+        <Box pt="3.7rem" bg="gray.200">
           <ImageSlider autoPlay={true} infiniteLoop={true} showThumbs={false}>
             {images.map((item, i) => (
               <Box bg="white" key={i} >
@@ -52,7 +55,7 @@ const LandingPage = () => {
 
         <Grid m="2rem 1rem" gridTemplateColumns={["repeat(2,1fr)", "repeat(3,1fr)", "repeat(4,1fr)"]} gap="12px" >
           {cateogryInfo.map((item, i) => (
-            <Box key={i}  >
+            <Box key={i} position="relative"  >
               <Image borderTopRadius={"1.5rem"} src={item.image} />
               <Flex >
                 <Center h="3.2rem" fontWeight={"bold"} color="black" fontSize={"1.6rem"} bg="yellow.500" borderBottomLeftRadius={'1.5rem'} w="50%">₹ {item.price}</Center>
@@ -110,6 +113,7 @@ const LandingPage = () => {
         {/* ==========FOOTER ================= */}
         <Footer />
       </Box>
+      {loading && <Loader />}
     </>
   )
 }

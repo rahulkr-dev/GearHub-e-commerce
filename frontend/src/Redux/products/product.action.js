@@ -6,7 +6,7 @@ export const getDataLandingPage = ()=>async(dispatch)=>{
     try{
         dispatch({type:USER_SHOW_LOADING})
         let res = await axios.get(url);
-        console.log(res.data)
+        // console.log(res.data)
         dispatch({type:USER_HIDE_LOADING})
         dispatch({type:LANDING_PAGE_GET_DATA_SUCESS,payload:res.data})
     }catch(err){
