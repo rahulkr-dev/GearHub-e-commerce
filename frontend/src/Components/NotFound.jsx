@@ -1,25 +1,26 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text,Button,Grid } from "@chakra-ui/react";
+import { GrAid } from "react-icons/gr";
 import {Link} from "react-router-dom"
 const NotFound = () => {
   return (
-    <Box
-      width="100%"
-      height="100%"
-      display="flex"
+    <Grid
       alignItems="center"
       justifyContent="center"
-      flexDirection="column"
+      gap="1rem"
+      mt="3rem"
+
     >
       <Text fontSize="4xl" fontWeight="medium" color="gray.500">
         404
       </Text>
       <Text fontSize="xl" color="gray.500">
-        Page not found
+        Page Not Found
       </Text>
+      <Text>You just hit a route that doesn't exist... the sadness.</Text>
       <Link to="/" mt={4}>
-        Go back to the homepage
+        <Button p="10px 16px" colorScheme={"cyan"}>Go back to the homepage</Button>
       </Link>
-    </Box>
+    </Grid>
   );
 };
 

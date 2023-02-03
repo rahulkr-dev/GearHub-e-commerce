@@ -2,8 +2,8 @@ const express = require('express');
 const { addToCart,getCartOfUser,deleteItem } = require('../controllers/cart');
 const app = express.Router();
 
-app.patch('/:cartId/add',addToCart)
-app.get('/:userId',getCartOfUser)
-app.patch('/:cartId/delete',deleteItem)
+app.patch('/:token/add',addToCart)
+app.get('/:token',getCartOfUser)
+app.patch('/delete/:token',deleteItem)
 
 module.exports = app;
