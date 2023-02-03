@@ -2,7 +2,7 @@
 
 Welcome to GearHub, your one-stop destination for all things sports! We offer a wide range of high-quality sports products from leading brands to help you up your game. 
 
-![GearHub Homepage](https://i.imgur.com/KXFqG3M.png)
+![GearHub Homepage](https://github.com/rahulkr-dev/GearHub-e-commerce/blob/main/frontend/src/Assects/Navbar.png)
 
 ## Features
 - Easy-to-use website with a clean and user-friendly interface
@@ -12,7 +12,7 @@ Welcome to GearHub, your one-stop destination for all things sports! We offer a 
 - Search Products
 - Admin management dashboard for managing the website and products
 
-![GearHub Dashboard](https://i.imgur.com/zsAlsHm.png)
+![GearHub Dashboard](https://github.com/rahulkr-dev/GearHub-e-commerce/blob/main/frontend/src/Assects/Dashboard.png)
 
 ## Stack
 - Front-end: HTML, CSS, JavaScript
@@ -38,8 +38,5 @@ Welcome to GearHub, your one-stop destination for all things sports! We offer a 
 
 We welcome contributions to our project. If you have ideas or suggestions, please feel free to open an issue or make a pull request.
 
-![GearHub Mens Page](https://i.imgur.com/zsAlsHm.png)
+![GearHub Mens Page](https://github.com/rahulkr-dev/GearHub-e-commerce/blob/main/frontend/src/Assects/Mens.png)
 
-![GearHub Womens Page](https://i.imgur.com/zsAlsHm.png)
-
-![GearHub Kids Page](https://i.imgur.com/zsAlsHm.png)
