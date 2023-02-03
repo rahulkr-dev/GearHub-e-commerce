@@ -8,7 +8,7 @@ const OrderList = () => {
     const dispatch = useDispatch();
     const { token } = useSelector(store => store.auth);
     const { totalOrderData } = useSelector(store => store.order);
-    console.log(totalOrderData)
+    // console.log(totalOrderData)
     // const {address,items,total,status} = totalOrderData
 
     useEffect(() => {

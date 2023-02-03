@@ -1,7 +1,10 @@
 
 import { LANDING_PAGE_ERROR, LANDING_PAGE_GET_DATA_SUCESS, USER_HIDE_LOADING, USER_SHOW_LOADING } from './product.types';
 import  axios from 'axios';
-let url = `http://localhost:8080/api/product`
+import { development_url,production_url } from "../../Utils/urlLinks";
+
+let url = `${production_url}/api/product`
+// let url = `http://localhost:8080/api/product`
 export const getDataLandingPage = ()=>async(dispatch)=>{
     try{
         dispatch({type:USER_SHOW_LOADING})

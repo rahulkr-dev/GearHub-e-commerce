@@ -13,10 +13,12 @@ import { BiSortAlt2 as SortIcon } from "react-icons/bi"
 import Loader from './../Components/Loader';
 import { useSelector } from 'react-redux';
 import {FaGreaterThan} from "react-icons/fa"
+import { production_url,development_url } from './../Utils/urlLinks';
 
+let url = `${production_url}/api/product`
 
 // let url = `http://localhost:8080/api/product?filterBy=gender&filterName=male&sortBy=price&sortOrder=-1`
-let url = `http://localhost:8080/api/product/pagenation`
+
 const Men = () => {
     const [page,setPage] = useState(1)
     const [data, setData] = useState([]);
@@ -29,7 +31,7 @@ const Men = () => {
 
     useEffect(() => {
         setisLoaded(true);
-        let newUrl =`${url}?filterBy=gender&filterName=male&pageNo=${page}&limit=10`
+        let newUrl =`${url}/pagenation?filterBy=gender&filterName=male&pageNo=${page}&limit=10`
         getData(newUrl)
     }, [page])
 
@@ -47,7 +49,9 @@ const Men = () => {
         }
     }
     const getFilterData = async(body)=>{
-        let newUrl = `http://localhost:8080/api/product/multiple-filter`
+        // let newUrl = `http://localhost:8080/api/product/multiple-filter`
+        let newUrl = `${url}/multiple-filter`
+
         try {
             setisLoaded(true)
             let res = await axios.post(newUrl,body);
@@ -69,11 +73,11 @@ const Men = () => {
         // console.log(e.target.value)
         switch(e.target.value){
             case "inc" :{
-                let newUrl =`${url}?filterBy=gender&filterName=male&pageNo=${page}&limit=10&sortBy=price&sortOrder=1`
+                let newUrl =`${url}/pagenation?filterBy=gender&filterName=male&pageNo=${page}&limit=10&sortBy=price&sortOrder=1`
                 getData(newUrl)
             }
             case "desc" :{
-                let newUrl =`${url}?filterBy=gender&filterName=male&pageNo=${page}&limit=10&sortBy=price&sortOrder=-1`
+                let newUrl =`${url}/pagenation?filterBy=gender&filterName=male&pageNo=${page}&limit=10&sortBy=price&sortOrder=-1`
                 getData(newUrl)
             }
             default : setPage(1)

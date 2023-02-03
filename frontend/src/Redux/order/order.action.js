@@ -1,7 +1,10 @@
 
 import axios from "axios"
 import { ADD_NEW_ADDRESS, ORDER_LOADING_SHOW, ORDER_PLACED_SUCESS, ORDER_LOADING_HIDE,ORDER_PLACED_RESET,GET_PLACED_ORDER } from './order.types';
-let url = 'http://localhost:8080/api/order'
+import { development_url,production_url } from "../../Utils/urlLinks";
+
+let url = `${production_url}/api/order`
+// let url = 'http://localhost:8080/api/order'
 export const addNewAddress = (payload) => {
     return {
         type: ADD_NEW_ADDRESS,

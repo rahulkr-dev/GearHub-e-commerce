@@ -13,8 +13,11 @@ import { BiSortAlt2 as SortIcon } from "react-icons/bi"
 import Loader from './../Components/Loader';
 import { useSelector } from 'react-redux';
 import {FaGreaterThan} from "react-icons/fa";
+import { production_url,development_url } from './../Utils/urlLinks';
 
-let url = `http://localhost:8080/api/product/pagenation`
+let url = `${production_url}/api/product`
+
+// let url = `http://localhost:8080/api/product/pagenation`
 
 
 const Women = () => {
@@ -29,7 +32,7 @@ const Women = () => {
 
   useEffect(() => {
       setisLoaded(true);
-      let newUrl =`${url}?filterBy=gender&filterName=female&pageNo=${page}&limit=10`
+      let newUrl =`${url}/pagenation?filterBy=gender&filterName=female&pageNo=${page}&limit=10`
       getData(newUrl)
   }, [page])
 
@@ -47,7 +50,7 @@ const Women = () => {
       }
   }
   const getFilterData = async(body)=>{
-      let newUrl = `http://localhost:8080/api/product/multiple-filter`
+      let newUrl = `${url}/multiple-filter`
       try {
           setisLoaded(true)
           let res = await axios.post(newUrl,body);
@@ -69,11 +72,11 @@ const Women = () => {
       // console.log(e.target.value)
       switch(e.target.value){
           case "inc" :{
-              let newUrl =`${url}?filterBy=gender&filterName=female&pageNo=${page}&limit=10&sortBy=price&sortOrder=1`
+              let newUrl =`${url}/pagenation?filterBy=gender&filterName=female&pageNo=${page}&limit=10&sortBy=price&sortOrder=1`
               getData(newUrl)
           }
           case "desc" :{
-              let newUrl =`${url}?filterBy=gender&filterName=female&pageNo=${page}&limit=10&sortBy=price&sortOrder=-1`
+              let newUrl =`${url}/pagenation?filterBy=gender&filterName=female&pageNo=${page}&limit=10&sortBy=price&sortOrder=-1`
               getData(newUrl)
           }
           default : setPage(1)

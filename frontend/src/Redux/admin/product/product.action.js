@@ -2,8 +2,11 @@
 import axios from 'axios';
 import { HIDE_LOADING, SHOW_LOADING } from './../../auth/auth.types';
 import { ADD_PRODUCT_ERROR, ADD_PRODUCT_SUCESS, GET_PRODUCT_ERROR, GET_PRODUCT_SUCESS, ITEM_ADDED_RESET,DELETE_PRODUCT_SUCESS, DELETE_PRODUCT_ERROR,DASHBOARD_INFO,DASHBOARD_INFO_ERROR } from './product.types';
+import { production_url,development_url } from '../../../Utils/urlLinks';
 
-const url = `http://localhost:8080/api/product`;
+// const url = `http://localhost:8080/api/product`;
+const url = `${production_url}/api/product`
+
 const axiosConfig = {
     headers: {
         'Content-Type': 'application/json',

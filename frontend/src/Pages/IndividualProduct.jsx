@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Footer from "../Components/Footer"
 import { AiTwotoneStar } from "react-icons/ai"
+import { production_url,development_url } from './../Utils/urlLinks';
 
 const initRating = {
     rating: "",
@@ -18,7 +19,8 @@ const initRating = {
     comment: ""
 }
 
-let url = `http://localhost:8080/api/product`;
+// let url = `http://localhost:8080/api/product`;
+let url = `${production_url}/api/product`
 const IndividualProduct = () => {
     const [data, setData] = useState({})
     const [loading, setLoading] = useState(false)

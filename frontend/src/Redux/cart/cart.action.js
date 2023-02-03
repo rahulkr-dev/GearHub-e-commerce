@@ -1,7 +1,10 @@
 
 import axios from "axios"
 import { CART_ADD_ERROR, CART_HIDE_LOADING, CART_SHOW_LOADING, CART_GET_DATA_SUCESS,CART_ADD_DATA,DELETE_CART_ITEMS_SUCESS,DELETE_CART_ITEMS_ERROR } from './cart.types';
-let url = `http://localhost:8080/api/cart`
+import { development_url,production_url } from "../../Utils/urlLinks";
+
+// let url = `http://localhost:8080/api/cart`
+let url = `${production_url}/api/cart`
 
 export const addToCart = ({token,body})=>async(dispatch)=>{
     try{

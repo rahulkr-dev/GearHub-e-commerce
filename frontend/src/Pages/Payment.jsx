@@ -46,7 +46,7 @@ const Payment = () => {
 
     const handleOrder = () => {
         // dispatching order api
-        console.log('handle order works ')
+        // console.log('handle order works ')
         let items = data.map((item) => (
             {
                 product: item.product._id,

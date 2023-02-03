@@ -1,7 +1,9 @@
 import axios from "axios"
 import { FETCH_SIGNUP_ERROR, FETCH_SIGNUP_SUCESS, HIDE_LOADING, SHOW_LOADING, FETCH_LOGIN_SUCESS, FETCH_LOGIN_ERROR, LOGOUT } from './auth.types';
+import { production_url,development_url } from "../../Utils/urlLinks";
 
-let url = `http://localhost:8080`
+// let url = `http://localhost:8080`
+let url = production_url
 
 export const singupRequest = (data)=>async(dispatch)=>{
     try{

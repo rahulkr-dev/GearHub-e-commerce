@@ -8,8 +8,10 @@ import { useSelector } from 'react-redux';
 import UserProfile from "./UserProfile";
 import { HiShoppingCart } from "react-icons/hi"
 import axios from "axios";
+import { production_url,development_url } from "../Utils/urlLinks";
+let url =`${production_url}/api/product`
 
-let url = `http://localhost:8080/api/product`
+// let url = `http://localhost:8080/api/product`
 function Navbar() {
     const location = useLocation();
     const { isOpen, onOpen, onClose } = useDisclosure();
