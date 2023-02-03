@@ -13,7 +13,7 @@ const reviewSchema = new mongoose.Schema({
   review_title:{
     type:String
   },
-  review_text: {
+  comment: {
     type: String
   }
 });

@@ -42,7 +42,7 @@ const AddToCartItem = ({ product }) => {
         setTotalItem(totalItem - 1)
     }
 
-    const handleDelteItem = (id)=>{
+    const handleDelteItem = (id) => {
         // console.log(id)
         const payload = {
             token: token,
@@ -56,11 +56,12 @@ const AddToCartItem = ({ product }) => {
     return (
         <>
 
-            <Flex  bg="#fff" justifyContent={"space-between"} alignItems={"center"} p="1rem">
+            <Flex bg="#fff" justifyContent={"space-between"} alignItems={"center"} p="1rem">
+
                 <Image
                     boxSize={"8rem"}
-                    // objectFit={"cover"}
                     src={items.image_urls[0]} />
+
                 <Grid gap=".6rem">
                     <Text fontSize={".9rem"}>{items.name}</Text>
                     <Flex gap="1rem">
@@ -86,7 +87,7 @@ const AddToCartItem = ({ product }) => {
                     {/* delete button */}
                     <Box>
                         <Center
-                        onClick={()=>handleDelteItem(items._id)}
+                            onClick={() => handleDelteItem(items._id)}
                             _hover={{ cursor: "pointer" }}
                             m="auto" w="max-content" bg={"gray.100"} color="gray.600" p="6px 12px" borderRadius={'md'} fontSize={"1.5rem"}>
                             <RiDeleteBin6Line />
@@ -99,7 +100,7 @@ const AddToCartItem = ({ product }) => {
                     </Center>
                 </Grid>
             </Flex>
-          
+
         </>
     )
 }

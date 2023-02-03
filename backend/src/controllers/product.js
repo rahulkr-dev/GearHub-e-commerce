@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 const User = require('../models/user');
 const Order = require('../models/order')
+const jwt = require('jsonwebtoken')
 
 const addProduct = async (req, res) => {
     try {
@@ -23,6 +24,8 @@ const getAllProduct = async (req, res) => {
         res.status(500).send({ msg: "internal server error", error: err.message })
     }
 };
+
+
 const getProductByPageNation = async (req, res) => {
     try {
         let { sortBy, sortOrder, filterBy, filterName, pageNo, limit } = req.query;
@@ -126,4 +129,60 @@ const dashboardInfo = async (req, res) => {
         res.status(500).send({ msg: "Internal Server Error", msg: err.message })
     }
 }
-module.exports = { addProduct, getAllProduct, getIndividualProduct, deleteProduct, dashboardInfo, getProductByPageNation, multipleFilters }
+
+// /product?q=cricket-bat
+const searchProduct = async (req, res) => {
+    try {
+        const {q} = req.query;
+        let product = await Product.find();
+        let filter = product.filter((item)=>{
+            return item.name.toLowerCase().includes(q.toLowerCase())
+        });
+
+        res.send(filter)
+        
+
+    } catch (err) {
+        res.status(500).send({ msg: "Internal Server Error", msg: err.message })
+    }
+}
+
+// token through body and productId through params
+const addReview = async(req,res)=>{
+    try {
+        let productId = req.params.productId;
+        let token = req.body.token;
+        let {rating,review_title,comment} = req.body.payload
+        let decode = jwt.decode(token);
+        let userId = decode.userId;
+        if(!productId || !token) return res.status(404).send("Not Found")
+        let product = await Product.findById(productId);
+        product.reviews.push({
+            user:userId,
+            rating,review_title,comment
+        })
+
+        await product.save();
+        res.status(201).send({msg:"Review added Successfully",review:product.reviews})
+
+
+    } catch (err) {
+        res.status(500).send({ msg: "Internal Server Error", msg: err.message })
+    }
+}
+
+const getReview = async(req,res)=>{
+    try {
+        let productId = req.params.productId;
+        if(!productId) return res.status(404).send("Not Found")
+        let product = await Product.findById(productId);
+        res.status(200).send(product.reviews)
+
+
+    } catch (err) {
+        res.status(500).send({ msg: "Internal Server Error", msg: err.message })
+    }
+}
+
+
+module.exports = { addProduct, getAllProduct, getIndividualProduct, deleteProduct, dashboardInfo, getProductByPageNation, multipleFilters,searchProduct,addReview,getReview }

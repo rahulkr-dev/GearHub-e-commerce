@@ -9,20 +9,20 @@ const CardItem = ({ product }) => {
   const [image, setImage] = useState(product.image_urls[0]);
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const {loading,error} = useSelector((store=>store.cart))
-  const {auth,token} = useSelector((store=>store.auth));
+  const { loading, error } = useSelector((store => store.cart))
+  const { auth, token } = useSelector((store => store.auth));
   // console.log(auth)
 
-  const handleAddToCart = (item)=>{
-    if(!auth){
+  const handleAddToCart = (item) => {
+    if (!auth) {
       return navigate("/auth/login")
     }
     // console.log(item)
     const payload = {
-      token:token,
-      body:{
-        productId:item._id,
-        productQty:1
+      token: token,
+      body: {
+        productId: item._id,
+        productQty: 1
       }
     }
     dispatch(addToCart(payload))
@@ -30,7 +30,9 @@ const CardItem = ({ product }) => {
   return (
     <Box maxW="225px" borderWidth="1px" rounded="lg" overflow="hidden" p="10px">
       <Box>
-        <Image src={image} alt={product.name} objectFit="cover" h="200px" />
+        <Link to={`/product/${product._id}`}>
+          <Image src={image} alt={product.name} objectFit="cover" h="200px" />
+        </Link>
       </Box>
       <Flex mt="1rem" w="full" justifyContent={"flex-end"} pr="1rem" gap="2px" >
         {product.image_urls.map((item, i) => (
@@ -50,13 +52,11 @@ const CardItem = ({ product }) => {
           <Text pl="1rem" color="gray.500" as={"del"}> ₹ {Math.round(+product.price * 1.45)}</Text>
         </Flex>
         <Flex mt="auto">
-          <Link to={`/product/${product._id}`}>
 
-          </Link>
         </Flex>
-        <Button 
-        onClick={()=>handleAddToCart(product)}
-        borderRadius="none" bg="gray.700" variant={"unstyled"} color="#fff" p="6px 12px" textAlign={"center"} w="full">
+        <Button
+          onClick={() => handleAddToCart(product)}
+          borderRadius="none" bg="gray.700" variant={"unstyled"} color="#fff" p="6px 12px" textAlign={"center"} w="full">
           ADD TO CART
         </Button>
       </Box>

@@ -20,6 +20,9 @@ import Cart from './Cart';
 import Checkout from './Checkout';
 import Payment from './Payment';
 import PrivateRoute from '../Components/PrivateRoute'
+import IndividualProduct from './IndividualProduct'
+import OrderList from './OrderList'
+import NotFound from '../Components/NotFound'
 
 const AllRoutes = () => {
   return (
@@ -30,7 +33,9 @@ const AllRoutes = () => {
         <Route path='women' element={<Women />} />
         <Route path='kids' element={<Kids />} />
         <Route path='accessories' element={<Accessoreis />} />
+        <Route path='product/:productId' element={<IndividualProduct />} />
         <Route path='cart' element={<PrivateRoute><Cart /></PrivateRoute>} />
+        <Route path='order-list' element={<PrivateRoute><OrderList /></PrivateRoute>} />
         <Route path='checkout' element={<PrivateRoute><Checkout /></PrivateRoute>} />
         <Route path='payment' element={<PrivateRoute><Payment /></PrivateRoute>} />
         <Route path="admin" element={<PrivateRouteAdmin><DashboardHeader /></PrivateRouteAdmin>} >
@@ -44,6 +49,7 @@ const AllRoutes = () => {
       <Route path="/auth/signup" element={<Signup />} />
       <Route path="/auth/login" element={<Login />} />
       <Route path="/unauthorize" element={<UnauthorizePage />} />
+      <Route path="*" element={<NotFound />} />
 
 
       {/* make it private Route and secure */}
